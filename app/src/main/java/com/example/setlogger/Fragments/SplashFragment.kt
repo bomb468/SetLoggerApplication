@@ -23,7 +23,6 @@ class SplashFragment : Fragment() {
         lifecycleScope.launch((Dispatchers.Main)){
             delay(3000)
             findNavController().navigate(R.id.action_splashFragment_to_workoutSelectionFragment)
-
         }
     }
 
