@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.setlogger.Adapters.WorkoutSelectionAdapter
-import com.example.setlogger.R
-import com.example.setlogger.databinding.FragmentSplashBinding
 import com.example.setlogger.databinding.FragmentWorkoutSelectionBinding
 
 
@@ -35,7 +34,9 @@ class WorkoutSelectionFragment : Fragment() {
         val dataset = arrayOf("Biceps", "Back", "Legs")
 
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.recyclerView.adapter = WorkoutSelectionAdapter(dataset)
+        binding.recyclerView.adapter = WorkoutSelectionAdapter(dataset) {
+            run { findNavController() }
+        }
     }
 
 }
