@@ -30,7 +30,6 @@ class WorkoutSelectionAdapter(private val dataSet: Array<String>, private val la
         fun setOnClick(lambdaFunction: () -> Unit) {
             entireView.setOnClickListener{
                 lambdaFunction()
-                Log.d("hit","hit")
             }
         }
     }

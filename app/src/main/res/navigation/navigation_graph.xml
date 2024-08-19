@@ -21,5 +21,13 @@
         android:id="@+id/workoutSelectionFragment"
         android:name="com.example.setlogger.Fragments.WorkoutSelectionFragment"
         android:label="fragment_workout_selection"
-        tools:layout="@layout/fragment_workout_selection" />
+        tools:layout="@layout/fragment_workout_selection" >
+        <action
+            android:id="@+id/action_workoutSelectionFragment_to_addWorkoutDialog"
+            app:destination="@id/addWorkoutDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/addWorkoutDialog"
+        android:name="com.example.setlogger.Dialogs.AddWorkoutDialog"
+        android:label="AddWorkoutDialog" />
 </navigation>

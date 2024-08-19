@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.setlogger.Adapters.WorkoutSelectionAdapter
+import com.example.setlogger.R
 import com.example.setlogger.databinding.FragmentWorkoutSelectionBinding
 
 
@@ -35,7 +36,7 @@ class WorkoutSelectionFragment : Fragment() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = WorkoutSelectionAdapter(dataset) {
-            run { findNavController() }
+            run { findNavController().navigate(R.id.action_workoutSelectionFragment_to_addWorkoutDialog) }
         }
     }
 
