@@ -1,14 +1,11 @@
-package com.example.setlogger.Adapters
+package com.example.setlogger.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.setlogger.R
@@ -19,7 +16,7 @@ class ImageSelectionAdapter(private val dataSet: Array<String>,private val lambd
          * Provide a reference to the type of views that you are using
          * (custom ViewHolder)
          */
-        private var selectedPosition : Int = 0
+        private var selectedPosition : Int = 0 // RecylerView.NO_POSITION
         class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val colorName : TextView = view.findViewById(R.id.color_name)
             val colorImage : ImageView = view.findViewById(R.id.color_image)

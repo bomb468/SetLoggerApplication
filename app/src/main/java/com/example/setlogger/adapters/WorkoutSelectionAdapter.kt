@@ -1,6 +1,6 @@
-package com.example.setlogger.Adapters
+package com.example.setlogger.adapters
 
-import android.util.Log
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +9,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.setlogger.R
+import com.google.android.material.card.MaterialCardView
 
 
-class WorkoutSelectionAdapter(private val dataSet: Array<String>, private val lambdaFunction: () -> Unit) :
+class WorkoutSelectionAdapter(private var dataSet: List<String>, private val openDialog: () -> Unit , private val openSetList: (String) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /**
@@ -20,13 +21,19 @@ class WorkoutSelectionAdapter(private val dataSet: Array<String>, private val la
      */
     class WorkoutViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val workoutNameHolder : TextView = view.findViewById(R.id.workoutName)
+        val entireView : MaterialCardView = view.findViewById(R.id.card)
         fun bind(text : String){
             workoutNameHolder.text=text
+        }
+        fun setOnClick(workoutName : String, lambdaFunction: (String) -> Unit){
+            entireView.setOnClickListener{
+                lambdaFunction(workoutName)
+            }
         }
     }
 
     class AddWorkoutViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val entireView : ConstraintLayout = view.findViewById(R.id.entire_view)
+        val entireView : MaterialCardView = view.findViewById(R.id.card)
         fun setOnClick(lambdaFunction: () -> Unit) {
             entireView.setOnClickListener{
                 lambdaFunction()
@@ -55,8 +62,9 @@ class WorkoutSelectionAdapter(private val dataSet: Array<String>, private val la
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         if (viewHolder is WorkoutViewHolder) {
             viewHolder.bind(dataSet[position])
+            viewHolder.setOnClick(dataSet[position],openSetList)
         }else if (viewHolder is AddWorkoutViewHolder){
-            viewHolder.setOnClick(lambdaFunction)
+            viewHolder.setOnClick(openDialog)
         }
     }
 
@@ -67,5 +75,11 @@ class WorkoutSelectionAdapter(private val dataSet: Array<String>, private val la
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size+1
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateWorkoutNames(newWorkoutNames: List<String>) {
+        dataSet = newWorkoutNames
+        notifyDataSetChanged()
+    }
 
 }

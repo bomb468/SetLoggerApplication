@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.setlogger.Fragments.SplashFragment"
+        android:name="com.example.setlogger.fragments.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -19,15 +19,38 @@
     </fragment>
     <fragment
         android:id="@+id/workoutSelectionFragment"
-        android:name="com.example.setlogger.Fragments.WorkoutSelectionFragment"
+        android:name="com.example.setlogger.fragments.WorkoutSelectionFragment"
         android:label="fragment_workout_selection"
         tools:layout="@layout/fragment_workout_selection" >
         <action
             android:id="@+id/action_workoutSelectionFragment_to_addWorkoutDialog"
             app:destination="@id/addWorkoutDialog" />
+        <action
+            android:id="@+id/action_workoutSelectionFragment_to_workoutSetListFragment"
+            app:destination="@id/workoutSetListFragment" />
     </fragment>
     <dialog
         android:id="@+id/addWorkoutDialog"
-        android:name="com.example.setlogger.Dialogs.AddWorkoutDialog"
-        android:label="AddWorkoutDialog" />
+        android:name="com.example.setlogger.dialogs.AddWorkoutDialog"
+        android:label="AddWorkoutDialog" >
+        <action
+            android:id="@+id/action_addWorkoutDialog_to_workoutSetListFragment"
+            app:destination="@id/workoutSetListFragment"
+            app:popUpTo="@id/workoutSelectionFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="workoutName"
+                app:argType="string" />
+        </action>
+    </dialog>
+    <fragment
+        android:id="@+id/workoutSetListFragment"
+        android:name="com.example.setlogger.fragments.WorkoutSetListFragment"
+        android:label="fragment_workout_set_list"
+        tools:layout="@layout/fragment_workout_set_list">
+        <argument
+            android:name="workoutName"
+            app:argType="string"
+            android:defaultValue="Default Workout Name" />
+    </fragment>
 </navigation>

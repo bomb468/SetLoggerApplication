@@ -1,4 +1,4 @@
-package com.example.setlogger.Fragments
+package com.example.setlogger.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

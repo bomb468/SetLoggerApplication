@@ -7,8 +7,8 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,9 +22,11 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chose your Image"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="Enter the New Workout's Name"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             app:layout_constraintBottom_toTopOf="@+id/iconSelector"
+            android:textStyle="normal"
+            android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +34,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/iconSelector"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
@@ -54,24 +57,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-            style="@style/Widget.MaterialComponents.Button"/>
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Workout Name"
             app:endIconMode="clear_text"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconSelector"
-            app:shapeAppearance="@style/Cut">
+            app:layout_constraintTop_toBottomOf="@+id/iconSelector">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
